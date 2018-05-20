@@ -22,6 +22,7 @@
     <!-- Custom CSS -->
     <link href="../css/stylish-portfolio.min.css" rel="stylesheet">
 
+
   </head>
 
   <body id="page-top">
@@ -60,24 +61,155 @@
 
 
 
-    <!-- About -->
+    <!-- g power a mod b -->
+
+
+        <script>
+
+        function Power()
+        {
+          var a = parseInt( document.getElementById('a').value);
+          var b = parseInt( document.getElementById('b').value);
+          var n = parseInt( document.getElementById('c').value);
+
+          var x=1;
+          a=a % n;
+           while(b>0){
+             if((b & 1)==1){
+               x=(x*a)%n;
+             }
+             b=b>>1;
+             a=(a*a)%n;
+           }
+           document.getElementById('display').innerHTML = x;
+           //return x;
+        }
+
+        </script>
+
     <section class="content-section bg-light" id="about">
       <div class="container text-center">
         <div class="row">
           <div class="col-lg-10 mx-auto">
-            <h2>About Cryptography</h2>
+            <h2>g power a mod b</h2>
             <p class="lead mb-5"> <br>
-              Cryptography is the study of the principles and techniques by which information can be concealed
-              in ciphertexts and later revealed by legitimate users employing the secret key.
-             <br><br>
-             The following are some of the implimintations the students in this section have done.<br>
-             <br>
-            <a class="btn btn-dark btn-xl js-scroll-trigger" href="#portfolio">Check Them Out!</a>
+                a: <input  class=" m-3" type="number" id="a"><br>
+                  b: <input  class=" m-3" type="number" id="b"><br>
+                    c: <input  class=" m-3" type="number" id="c"> <br>
+
+                    <button class="btn btn-dark btn-xl js-scroll-trigger m-3" onclick='Power()'>Calculate</button>
+                    <br>
+
+                Answer: <b> <span id='display'></span> </b>
+              <br>
+
+
+
           </div>
         </div>
       </div>
     </section>
 
+
+    <!-- About -->
+
+    <script>
+
+    function gcd(){
+      var r0;
+      var r1;
+      var r2;
+
+      r0= parseInt( document.getElementById('a1').value);
+      r1= parseInt( document.getElementById('b1').value);
+      r2=r0%r1;
+      while(r2){
+        r0=r1;
+        r1=r2;
+        r2=r0%r1;
+      }
+      if(r1>0){
+        document.getElementById('display1').innerHTML = r1;
+      }
+
+      else {
+      document.getElementById('display1').innerHTML =  -r1;
+      }
+
+    }
+
+    </script>
+
+    <section class="content-section bg-light" id="about">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h2>gcd</h2>
+            <p class="lead mb-5"> <br>
+                a: <input  class=" m-3" type="number" id="a1"><br>
+                  b: <input  class=" m-3" type="number" id="b1"><br>
+
+                    <button class="btn btn-dark btn-xl js-scroll-trigger m-3" onclick='gcd()'>Calculate</button>
+                    <br>
+
+                Answer: <b><span id='display1'></span></b>
+              <br>
+
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modular Inverse-->
+    <script>
+    function inverseMod( a, m )
+    {
+       for ( var x = 1; x <= m; ++x )
+       {
+            if ( ( ( a * x ) % m ) == 1 )
+            {
+                return x;
+            }
+       }
+       return 0;
+    }
+
+    function test( )
+    {
+        var a = parseInt( document.getElementById('a2').value);
+        var m = parseInt( document.getElementById('b2').value);
+        var x = inverseMod( a, m );
+          document.getElementById('display2').innerHTML = x;
+          //
+            //           + A + "^-1 mod " + M + "</b> is "
+              //         + ( X == 0 ? "undefined" : X ) + "<br/>");
+    }
+
+    </script>
+
+    <section class="content-section bg-light" id="about">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h2>g power a mod b</h2>
+            <p class="lead mb-5"> <br>
+                a: <input class=" m-3" type="number" id="a2"><br>
+                  p: <input class=" m-3" type="number" id="b2"><br>
+
+                    <button class="btn btn-dark btn-xl js-scroll-trigger m-3" onclick='test()'>Calculate</button>
+                    <br>
+
+                The value of a^-1 mod p = <b> <span id='display2'></span></b>
+              <br>
+
+
+
+          </div>
+        </div>
+      </div>
+    </section>
 
 
 
@@ -113,6 +245,8 @@
 
     <!-- Custom scripts for this template -->
     <script src="../js/stylish-portfolio.min.js"></script>
+
+
 
   </body>
 
