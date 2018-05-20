@@ -39,22 +39,22 @@
           <a class="js-scroll-trigger" href="../index.html">Home</a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="pages/AES.html">AES</a>
+          <a class="js-scroll-trigger" href="AES.html">AES</a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="pages/ElGamal.html">ElGamal</a>
+          <a class="js-scroll-trigger" href="ElGamal.html">ElGamal</a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="pages/RSA.html">RSA</a>
+          <a class="js-scroll-trigger" href="RSA.html">RSA</a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="pages/g-power-a-mod-b.html">g power a mod b</a>
+          <a class="js-scroll-trigger" href="g-power-a-mod-b.html">g power a mod b</a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="pages/Hash-functions.html">Hash functions</a>
+          <a class="js-scroll-trigger" href="Hash-functions.html">Hash functions</a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="pages/Fast-Exponentiation.html">Fast Exponentiation</a>
+          <a class="js-scroll-trigger" href="Fast-Exponentiation.html">Fast Exponentiation</a>
         </li>
       </ul>
     </nav>
@@ -64,28 +64,7 @@
     <!-- g power a mod b -->
 
 
-        <script>
-
-        function Power()
-        {
-          var a = parseInt( document.getElementById('a').value);
-          var b = parseInt( document.getElementById('b').value);
-          var n = parseInt( document.getElementById('c').value);
-
-          var x=1;
-          a=a % n;
-           while(b>0){
-             if((b & 1)==1){
-               x=(x*a)%n;
-             }
-             b=b>>1;
-             a=(a*a)%n;
-           }
-           document.getElementById('display').innerHTML = x;
-           //return x;
-        }
-
-        </script>
+        <script src="../scripts/g-power-a-mod-b.js" type="text/javascript"></script>
 
     <section class="content-section bg-light" id="about">
       <div class="container text-center">
@@ -111,34 +90,8 @@
     </section>
 
 
-    <!-- About -->
-
-    <script>
-
-    function gcd(){
-      var r0;
-      var r1;
-      var r2;
-
-      r0= parseInt( document.getElementById('a1').value);
-      r1= parseInt( document.getElementById('b1').value);
-      r2=r0%r1;
-      while(r2){
-        r0=r1;
-        r1=r2;
-        r2=r0%r1;
-      }
-      if(r1>0){
-        document.getElementById('display1').innerHTML = r1;
-      }
-
-      else {
-      document.getElementById('display1').innerHTML =  -r1;
-      }
-
-    }
-
-    </script>
+    <!-- gcd -->
+    <script src="../scripts/gcd.js" type="text/javascript"></script>
 
     <section class="content-section bg-light" id="about">
       <div class="container text-center">
@@ -163,31 +116,8 @@
     </section>
 
     <!-- Modular Inverse-->
-    <script>
-    function inverseMod( a, m )
-    {
-       for ( var x = 1; x <= m; ++x )
-       {
-            if ( ( ( a * x ) % m ) == 1 )
-            {
-                return x;
-            }
-       }
-       return 0;
-    }
 
-    function test( )
-    {
-        var a = parseInt( document.getElementById('a2').value);
-        var m = parseInt( document.getElementById('b2').value);
-        var x = inverseMod( a, m );
-          document.getElementById('display2').innerHTML = x;
-          //
-            //           + A + "^-1 mod " + M + "</b> is "
-              //         + ( X == 0 ? "undefined" : X ) + "<br/>");
-    }
-
-    </script>
+    <script src="../scripts/modular-inverse.js" type="text/javascript"></script>
 
     <section class="content-section bg-light" id="about">
       <div class="container text-center">
@@ -222,7 +152,7 @@
             You can find the source code available here.
           </li>
           <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white" href="#">
+            <a class="social-link rounded-circle text-white" href="https://github.com/shorookMS/Cryptosystems">
               <i class="icon-social-github"></i>
             </a>
           </li>

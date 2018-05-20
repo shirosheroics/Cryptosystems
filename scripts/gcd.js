@@ -1,13 +1,12 @@
-<script>
 //find the gcd(a,b)
 //two integers a and b are relatively prime if gcd(a,b)=1
-function gcd(a,b){
+function gcd(){
   var r0;
   var r1;
   var r2;
 
-  r0=a;
-  r1=b;
+  r0= parseInt( document.getElementById('a1').value);
+  r1= parseInt( document.getElementById('b1').value);
   r2=r0%r1;
   while(r2){
     r0=r1;
@@ -15,16 +14,11 @@ function gcd(a,b){
     r2=r0%r1;
   }
   if(r1>0){
-    return r1;
+    document.getElementById('display1').innerHTML = r1;
   }
 
   else {
-    return -r1;
+  document.getElementById('display1').innerHTML =  -r1;
   }
+
 }
-var a=prompt("Enter the value of a: "); // input a
-var b=prompt("Enter the value of b: "); // input b
-
-document.write("The greater common divisor between these two integers is " + gcd(a,b));
-
-</script>

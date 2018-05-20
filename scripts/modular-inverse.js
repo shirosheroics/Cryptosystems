@@ -1,4 +1,4 @@
-<script>
+
 // finds
 //   a^-1 mod p
 function inverseMod( a, m )
@@ -13,15 +13,13 @@ function inverseMod( a, m )
    return 0;
 }
 
-function test( A, M )
+function test( )
 {
-    var X = inverseMod( A, M );
-    document.write("The value of a^-1 mod p = <b>"
-                   + A + "^-1 mod " + M + "</b> is "
-                   + ( X == 0 ? "undefined" : X ) + "<br/>");
+    var a = parseInt( document.getElementById('a2').value);
+    var m = parseInt( document.getElementById('b2').value);
+    var x = inverseMod( a, m );
+      document.getElementById('display2').innerHTML = x;
+      //
+        //           + A + "^-1 mod " + M + "</b> is "
+          //         + ( X == 0 ? "undefined" : X ) + "<br/>");
 }
-
- var a = prompt("Enter the value of a"); //input a
- var p = prompt("Enter the value of P"); //input p
- test(a,p);
-</script>
