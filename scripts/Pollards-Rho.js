@@ -19,10 +19,10 @@ function pollardrho(){
 		y=f(f(y,num,),num)
 		d=gcd(Math.abs(x-y),num)
 		//document.write(+ x, +y,+d);
-}
+
 		if (d>1 && num>d){
 			document.getElementById('result').innerHTML = d;}
 		(if d==num){
 			document.getElementById('result').innerHTML = -1 ;}
-
+}
 }
