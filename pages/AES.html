@@ -65,22 +65,33 @@
       <div class="container text-center">
         <div class="row">
           <div class="col-lg-10 mx-auto">
-            <h2>About Cryptography</h2>
+            <h2>AES</h2>
             <p class="lead mb-5"> <br>
-              Cryptography is the study of the principles and techniques by which information can be concealed
-              in ciphertexts and later revealed by legitimate users employing the secret key.
-             <br><br>
+              <form>
+                  <div class="form-group">
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Key Length</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                      <option selected>Choose...</option>
+                      <option value="128">128</option>
+                      <option value="192">192</option>
+                      <option value="256">256</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
 
-             <form name="search" action="../scripts/AES-enc.py" method="get">
-               Search: <input type="text" name="searchbox">
-               <input type="submit" value="Submit">
-               <span id='display'></span>
-             </form>
+                    Message to encrypt: <br>
+                 <textarea  class=" m-3" id="enc"></textarea><br>
+                    Encrypted Message: <b> <span id='cypher'></span> </b>
+                    <br><br>
+                    Message to decrypt: <br>
+                  <textarea  class=" m-3" id="dec"></textarea><br><br>
+                    Encrypted Message: <b> <span id='clear'></span> </b> <br>
 
-
-
-             <br>
-            <a class="btn btn-dark btn-xl js-scroll-trigger" href="#portfolio">Check Them Out!</a>
+                    <button class="btn btn-dark btn-xl js-scroll-trigger m-3" >Calculate</button>
+                    <br>
+                  </div>
+              <br>
+            </form>
           </div>
         </div>
       </div>
