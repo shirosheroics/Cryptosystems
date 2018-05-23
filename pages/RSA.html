@@ -69,14 +69,15 @@
           <div class="col-lg-10 mx-auto">
             <h2>RSA</h2>
             <p class="lead mb-5"> <br>
-                Message to encrypt: <br>
-                 <textarea  class=" m-3" id="text"></textarea><br>
-                    e: <input  class=" m-3" placeholder = "Enter prime number" type="number" id="e" value="1757316971"><br>
-                    p: <input  class=" m-3" placeholder = "Enter prime number" type="number" id="p" value="71593"> <br>
-                    q: <input  class=" m-3" placeholder = "Enter prime number" type="number" id="q" value="77041"> <br>
 
-                    <button class="btn btn-dark btn-xl js-scroll-trigger m-3" onclick='encrypt()'>Calculate</button>
-                    <br>
+                Message to encrypt <br>
+                 <textarea  class="form-control m-3" id="text"></textarea><br>
+                    e <input  class=" mx-auto w-25 form-control m-2" placeholder = "Enter prime number" type="number" id="e" value="1757316971">
+                    p <input  class=" mx-auto w-25 form-control m-2" placeholder = "Enter prime number" type="number" id="p" value="71593">
+                    q <input  class=" mx-auto w-25 form-control m-2" placeholder = "Enter prime number" type="number" id="q" value="77041"> 
+
+                    <button class="btn btn-dark btn-xl js-scroll-trigger m-2" onclick='encrypt()'>Calculate</button>
+                    <br><br>
 
                 Encrypted Message: <b> <span id='encrypted'></span> </b>
               <br>

@@ -176,7 +176,7 @@ def InvCipher():
 while(Nr!=128 and Nr!=192 and Nr!=256):
     print("Enter the length of Key (128, 192 or 256 only): ")
     Nr = int(input(""))
-Nr = 128;
+#Nr = 128;
 Nk = Nr / 32
 Nr = Nk + 6
 Nr = int(Nr)

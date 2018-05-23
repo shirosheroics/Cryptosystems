@@ -107,29 +107,31 @@ def AddRoundKey(roundVar):
             state[j][i] ^= RoundKey[(roundVar * Nb * 4) + (i * Nb + j)]
 
 
-def InvSubBytes():
+def SubBytes():
     for i in range(4):
         for j in range(4):
-            state[i][j] = getSBoxInvert(state[i][j] % 256)
+            state[i][j] = getSBoxValue(state[i][j])
 
 
-def InvShiftRows():
-    temp = state[1][3]
-    state[1][3] = state[1][2]
-    state[1][2] = state[1][1]
-    state[1][1] = state[1][0]
-    state[1][0] = temp
-    temp = state[2][0]
-    state[2][0] = state[2][2]
-    state[2][2] = temp
-    temp = state[2][1]
-    state[2][1] = state[2][3]
-    state[2][3] = temp
-    temp = state[3][0]
-    state[3][0] = state[3][1]
-    state[3][1] = state[3][2]
-    state[3][2] = state[3][3]
-    state[3][3] = temp
+def ShiftRows():
+    temp=state[1][0]
+    state[1][0]=state[1][1]
+    state[1][1]=state[1][2]
+    state[1][2]=state[1][3]
+    state[1][3]=temp
+
+    temp=state[2][0]
+    state[2][0]=state[2][2]
+    state[2][2]=temp
+    temp=state[2][1]
+    state[2][1]=state[2][3]
+    state[2][3]=temp
+
+    temp=state[3][3]
+    state[3][3]=state[3][2]
+    state[3][2]=state[3][1]
+    state[3][1]=state[3][0]
+    state[3][0]=temp
 
 
 def xtime(x):
@@ -141,33 +143,36 @@ def Multiply(x, y):
                 (y >> 3 & 1) * xtime(xtime(xtime(x)))) ^ ((y >> 4 & 1) * xtime(xtime(xtime(xtime(x))))))
 
 
-def InvMixColumns():
+def MixColumns():
     for i in range(4):
         a = state[0][i]
         b = state[1][i]
         c = state[2][i]
         d = state[3][i]
-        state[0][i] = Multiply(a, 0x0e) ^ Multiply(b, 0x0b) ^ Multiply(c, 0x0d) ^ Multiply(d, 0x09)
-        state[1][i] = Multiply(a, 0x09) ^ Multiply(b, 0x0e) ^ Multiply(c, 0x0b) ^ Multiply(d, 0x0d)
-        state[2][i] = Multiply(a, 0x0d) ^ Multiply(b, 0x09) ^ Multiply(c, 0x0e) ^ Multiply(d, 0x0b)
-        state[3][i] = Multiply(a, 0x0b) ^ Multiply(b, 0x0d) ^ Multiply(c, 0x09) ^ Multiply(d, 0x0e)
+
+        state[0][i] = Multiply(a, 0x02) ^ Multiply(b, 0x03) ^ Multiply(c, 0x01) ^ Multiply(d, 0x01)
+        state[1][i] = Multiply(a, 0x01) ^ Multiply(b, 0x02) ^ Multiply(c, 0x03) ^ Multiply(d, 0x01)
+        state[2][i] = Multiply(a, 0x01) ^ Multiply(b, 0x01) ^ Multiply(c, 0x02) ^ Multiply(d, 0x03)
+        state[3][i] = Multiply(a, 0x03) ^ Multiply(b, 0x01) ^ Multiply(c, 0x01) ^ Multiply(d, 0x02)
 
 
-def InvCipher():
+def Cipher():
     for i in range(4):
         for j in range(4):
             state[j][i] = inn[i * 4 + j]
     AddRoundKey(Nr)
-    for RV in reversed(range(Nr)):
+    for RV in range(Nr):
         if (RV == 0):
             break;
-        InvShiftRows()
-        InvSubBytes()
+        SubBytes()
+        ShiftRows()
+        MixColumns()
         AddRoundKey(RV)
-        InvMixColumns()
-    InvShiftRows()
-    InvSubBytes()
-    AddRoundKey(0)
+
+    RV=10
+    SubBytes()
+    ShiftRows()
+    AddRoundKey(RV)
     for i in range(4):
         for j in range(4):
             out.append(state[j][i])
@@ -176,7 +181,7 @@ def InvCipher():
 while(Nr!=128 and Nr!=192 and Nr!=256):
     print("Enter the length of Key (128, 192 or 256 only): ")
     Nr = int(input(""))
-Nr = 128;
+#Nr = 128;
 Nk = Nr / 32
 Nr = Nk + 6
 Nr = int(Nr)
@@ -192,6 +197,6 @@ for i in range(Nk*4):
     inn[i] = int(Msg[i], 16)
 
 KeyExpansion()
-InvCipher()
+Cipher()
 for o in out:
     print(hex(o), end= ' ')
